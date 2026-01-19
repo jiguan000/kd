@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>企业知识库</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <h1>知识库</h1>
+        <div class="filter">
+          <label for="domain">领域</label>
+          <select id="domain">
+            <option value="">全部</option>
+          </select>
+        </div>
+        <ul id="doc-list"></ul>
+      </aside>
+      <main class="content">
+        <header>
+          <h2 id="doc-title">选择一篇文档</h2>
+          <p id="doc-desc"></p>
+        </header>
+        <section class="viewer">
+          <iframe id="doc-frame" title="文档预览"></iframe>
+          <img id="doc-image" alt="图片预览" />
+          <div id="doc-placeholder">请从左侧选择文档</div>
+        </section>
+      </main>
+    </div>
+    <script src="./app.js"></script>
+  </body>
+</html>
