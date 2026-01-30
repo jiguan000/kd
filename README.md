@@ -1,4 +1,4 @@
-# 企业百科知识库（FastAPI + MySQL + 前端）
+# 知识库（FastAPI + MySQL + 前端）
 
 ## 设计架构（高层）
 
@@ -41,10 +41,18 @@
 2. **数据库**
    - 使用 Navicat 创建数据库：`knowledge_base`
    - 连接信息填写至 `backend/.env`
+   - 存储位置![img.png](img.png)
 
 3. **后端依赖**
    - `pip install -r backend/requirements.txt`
 
 4. **前端**
    - 直接使用静态页面，使用浏览器打开 `frontend/index.html`
+   - *注意：上一步如果无效，则需配置CORS，比如用python静态服务器跑前端*
+   ```
+   cd ..\frontend(前端目录)
+   python -m http.server 5173
+   ```
+   *然后浏览器打开网页http://127.0.0.1:5173/index.html*
    - 将 API 地址指向后端（默认 `http://localhost:8000`）
+   

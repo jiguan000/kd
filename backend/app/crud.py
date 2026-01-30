@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 
-from app import models, schemas
+import models, schemas
 
 
 def create_document(db: Session, document: schemas.DocumentCreate) -> models.Document:
@@ -20,3 +20,16 @@ def list_documents(db: Session, domain: str | None = None) -> list[models.Docume
 
 def get_document(db: Session, document_id: int) -> models.Document | None:
     return db.query(models.Document).filter(models.Document.id == document_id).first()
+
+
+def delete_document(db: Session, document_id: int) -> bool:
+    try:
+        doc = db.query(models.Document).filter(models.Document.id == document_id).first()
+        if doc:
+            db.delete(doc)
+            db.commit()
+            return True
+        return False
+    except Exception as e:
+        db.rollback()
+        raise e

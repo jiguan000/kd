@@ -4,7 +4,7 @@ import uuid
 
 from fastapi import UploadFile
 
-from app.config import get_settings
+from config import get_settings
 
 
 def save_upload(file: UploadFile) -> tuple[str, str]:

@@ -3,31 +3,61 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>企业知识库</title>
+    <title>松果知识库</title>
+    <link
+  rel="icon"
+  type="image/png"
+  href="https://file.sungohealth.com/upload/admin/pic/97b4ef58-95d7-4cbf-a4e7-73b9b55af5c8favicon.ico"    />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <div class="app">
       <aside class="sidebar">
-        <h1>知识库</h1>
+
+        <div class="sidebar-header">
+
+  <div class="logo">
+    <img
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMoAAADLCAMAAAAY5/w/AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQwIDc5LjE2MDQ1MSwgMjAxNy8wNS8wNi0wMTowODoyMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTggKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RkIyQzZFNzNBMzdFMTFFODg4QUVGOEIxQUI3ODA1Q0QiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RkIyQzZFNzRBMzdFMTFFODg4QUVGOEIxQUI3ODA1Q0QiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpGQjJDNkU3MUEzN0UxMUU4ODhBRUY4QjFBQjc4MDVDRCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpGQjJDNkU3MkEzN0UxMUU4ODhBRUY4QjFBQjc4MDVDRCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pvam5DMAAAAGUExURf///wAAAFXC034AAAACdFJOU/8A5bcwSgAABUtJREFUeNrsndu22yAMREf//9NdXe1Lc2zQZUYirnlNDGwbhDRSHNhsw+9G6oo1nyzG33YCSno6+GyzKPnZ4KbNoOTngl1rRCnNBK7WgFKeB9xNi0KYBWJNg8KZACCCAZ1iO/osCh6Dwh78a1D6tp0UhW8N2RYsDbKZE/XeEC2Y5xqu35A7Vygg2ye3+u6WD5SlHQPPeKaOh4VAOMUBca+zaDSx2437OXIMU4zkkmX/tDfT5Dmct597n2wsUGWB7NaZp8stSmDVVl3eexhfr2sUx1WcB7JaZ+5eVyiuq5gkRS86hUKJ1/lx2i1KW2Do7Tp0KQpnNIukxIIrlOx4mEXBTxTpcFJV4xMFh6L4Z4bqM9GjeE0y6hGQHsVnXNGlAddjRReK8o4x1aF1DwiEpCIWgkjjQFHIydXsw20nIGWgaCCeOVz3s0BRJF42EUde1viD4sWoalpZEtdQdyjZvGOJJLqhLlBKMyyw1OXPj+CcrYWmQDi6BmPNFPOuFIv32U967Vf0ZdpBRNrElt7CvGOVp2o5L9fJNDCaFOR1MFTuDpgOlce90ClOoLq5oTIpHI2yni03YNujkIdQgbSgXG5/vhywR5EM0qNsKFDQQOLZ9tDDiAYYQOH2f6UZU1G0auZ12grW/lh4fV+IR71GjP1M/kW5oz1x298ev7hM+s4q88HVda1O6vOkNN/7Wmjdf5UvnfJJfmjG9VvXI2Z6khKSsJtdO+3Mr5RYhDLzVvJFonwpJ4TwinThRkF5LH/1WKZY9u4z7ET6NEn1e/4JLVFQum3RolErrK0fKFWWQmVKKF2ADIofhlb0XiRZliAkElJ8PXPvgJinMCScJuRrswEVGt4MXZMonyfZlus06KYLmNAKh2VZVErzpX8ABgq2N4wQqxWcNQugYO9QTeoaIRR9EdV6EDBRtOWsmzFARoGehIdikoEILHwUyElQ2ypfgGIPQvHWCyHxJFu3it+fRS4q6UfZ+7NxR77bGLtlj6Af339C+osaor8VbHdb1gMGUPQF03FV8+4yRGt8W4rynTKg+VDkNca5CH9VouErdNth0kgqBu62QNRiu4gBUjx4ribknSVZcClaB85vkyjpmKqlqwa7NEWP4HSWDROloJcSDBBMbLnMmhTXUM6Kxkr2BIp2/yoq2WmBSC6LlTLhapTcywuoGoCm2CH0QgWSF02NdIPBOO11FtRt72bRkRhbQQ3Er+wgjf8zemcsJ8hdKMvPVoF4JwopucizXAUU1oC0J1Jx8gfycbLQqz8fV1GVdUqKsDBXEkVGR8Z3oqCV5D9CoY8t1JVbyudNfTq6UPhD6zJJMmlbVo7fjsLukYGiGPmLUPidGgVF897xr0BRpMqMhGIKkLwqXUIxCUcyWVBEkf07Rz1BpEEJFQxk01FllFyekORjNqOELgj2T0YxHkj0CmOjRF4QnNpYZVsi+NOntOUeR2EepyUDX0UhOzmVo6r4AktqCrNSyFVGkUQ2Wf+h8p5MnQqgRzEFx2KhBr25nPPHlf6yrmgJxRSPhATDuBu0NowCZhtFAY5hwVEkU//iqSCpsOAwkhflRZGSvCjvAjvUFp92rjzntH+OD/Ycz9heFFro9aI8OSC2A1DsDBIKih1BwkGxE0hIKPYgFJsnoaHYNAgRxaZJiCj2IBSbJaGi2CgJF8UmSaZR7FgUexCKzZHQUWyMhI9iUyQvCoXFzkexGRIJio2QaFBsgkSEYgMkKhTrJ5GhWDuJDsW6SYQo9iAU6yWRolgriRbFOknEKNZI8qKkWeyLUayNRI9iXSQNKG3tRTmx/RJgAFVKU5Tws1YoAAAAAElFTkSuQmCC"
+      alt="松果知识库 Logo"
+    />
+  </div>
+  <h1>松果知识库</h1>
+</div>
+
         <div class="filter">
-          <label for="domain">领域</label>
-          <select id="domain">
-            <option value="">全部</option>
-          </select>
-        </div>
+  <label>领域</label>
+
+  <div class="domain-accordion">
+    <button id="domain-toggle" class="domain-toggle" type="button" aria-expanded="false">
+      <span id="domain-current">全部</span>
+      <span class="domain-chevron">▾</span>
+    </button>
+
+    <div id="domain-panel" class="domain-panel" hidden>
+      <div id="domain-list" class="domain-list"></div>
+    </div>
+  </div>
+</div>
         <ul id="doc-list"></ul>
       </aside>
       <main class="content">
-        <header>
-          <h2 id="doc-title">选择一篇文档</h2>
-          <p id="doc-desc"></p>
-        </header>
-        <section class="viewer">
-          <iframe id="doc-frame" title="文档预览"></iframe>
-          <img id="doc-image" alt="图片预览" />
-          <div id="doc-placeholder">请从左侧选择文档</div>
-        </section>
+        <canvas id="sprout-canvas" class="sprout-canvas" aria-hidden="true"></canvas>
+
+
+
+  <header>
+    <h2 id="doc-title">选择一篇文档</h2>
+    <p id="doc-desc"></p>
+  </header>
+
+  <section class="viewer">
+    <iframe id="doc-frame" title="文档预览"></iframe>
+    <img id="doc-image" alt="图片预览" />
+    <div id="doc-placeholder">请从左侧选择文档</div>
+  </section>
+
+
       </main>
     </div>
     <script src="./app.js"></script>

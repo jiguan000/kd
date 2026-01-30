@@ -1,3 +1,3 @@
-from app import models
+import models
 
 __all__ = ["models"]
