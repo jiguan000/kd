@@ -87,19 +87,66 @@ def delete_document(document_id: int, db: Session = Depends(get_db)):
 
     return {"message": "Document deleted successfully", "document_id": document_id}
 
+
+from fastapi import Form, Depends, HTTPException, Response
+from sqlalchemy.orm import Session
+
+# 你已有的导入保持不变，只需要确保 wechat.py 里有这两个函数
+from wechat import fetch_wechat_article, fetch_wechat_image_bytes
+
+
 @app.post("/documents/wechat", response_model=schemas.DocumentRead)
-def ingest_wechat(url: str, domain: str, description: str | None = None, db: Session = Depends(get_db)):
-    article = fetch_wechat_article(url)
-    file_path, file_type = save_text_content(article.content_html, "html")
-    doc = schemas.DocumentCreate(
-        title=article.title,
-        domain=domain,
-        description=description,
-        file_path=file_path,
-        file_type=file_type,
-        source_url=url,
-    )
-    return crud.create_document(db, doc)
+def ingest_wechat(
+        url: str = Form(...),
+        domain: str = Form(...),
+        description: str | None = Form(None),
+        db: Session = Depends(get_db)
+):
+    try:
+        # ✅ 关键：把图片 src 改写为你后端代理接口
+        article = fetch_wechat_article(url, image_proxy_path="/wechat/image")
+
+        if not article.content_html:
+            raise HTTPException(
+                status_code=400,
+                detail="无法提取文章内容，可能文章已被删除或访问受限"
+            )
+
+        file_path, file_type = save_text_content(article.content_html, "html")
+        doc = schemas.DocumentCreate(
+            title=article.title,
+            domain=domain,
+            description=description,
+            file_path=file_path,
+            file_type=file_type,
+            source_url=url,
+        )
+        return crud.create_document(db, doc)
+
+    except ValueError as e:
+        raise HTTPException(
+            status_code=403,
+            detail=f"微信反爬虫限制: {str(e)}"
+        )
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"处理微信文章失败: {str(e)}"
+        )
+
+@app.get("/wechat/image")
+def wechat_image(u: str):
+    """
+    图片代理：前端请求 /wechat/image?u=<原始微信图片URL>
+    后端带正确 Referer 去请求微信 CDN，再把图片流返回给前端
+    """
+    try:
+        img_bytes, content_type = fetch_wechat_image_bytes(u)
+        return Response(content=img_bytes, media_type=content_type)
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=502, detail=f"微信图片代理失败: {str(e)}")
 
 
 @app.get("/files/{document_id}")
