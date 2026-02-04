@@ -103,7 +103,7 @@ def ingest_wechat(
         db: Session = Depends(get_db)
 ):
     try:
-        # ✅ 关键：把图片 src 改写为你后端代理接口
+        #  关键：把图片 src 改写为你后端代理接口
         article = fetch_wechat_article(url, image_proxy_path="/wechat/image")
 
         if not article.content_html:

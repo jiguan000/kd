@@ -233,7 +233,7 @@ init();
     const e = easeOutCubic(p);
     const radius = rp.r0 + (rp.r1 - rp.r0) * e;
 
-    // 透明度：更克制更高级（你要更明显就把 0.16 提到 0.22）
+    // 透明度：
     const A = 0.16 * (1 - p);
 
     // 流体起伏幅度：开始大、后面衰减
