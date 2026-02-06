@@ -1,4 +1,4 @@
-const apiBase = "http://localhost:8000";
+const apiBase = window.API_BASE || "http://localhost:8000";
 
 const domainToggle = document.getElementById("domain-toggle");
 const domainPanel = document.getElementById("domain-panel");
@@ -323,6 +323,5 @@ init();
     setTimeout(() => addRipple(x, y), 85);
   });
 })();
-
 
 

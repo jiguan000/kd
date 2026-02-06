@@ -55,4 +55,38 @@
    ```
    *然后浏览器打开网页http://127.0.0.1:5173/index.html*
    - 将 API 地址指向后端（默认 `http://localhost:8000`）
+
+## 启动脚本（可选）
+
+### 后端
+
+```bash
+./scripts/start_backend.sh
+```
+
+可通过环境变量覆盖监听地址/端口：
+
+```bash
+HOST=0.0.0.0 PORT=8000 ./scripts/start_backend.sh
+```
+
+如需热更新：
+
+```bash
+RELOAD=1 ./scripts/start_backend.sh
+```
+
+### 前端
+
+前端脚本会写入 `frontend/config.local.js` 来配置 API 地址，然后启动静态服务。
+
+```bash
+API_BASE=http://127.0.0.1:8000 ./scripts/start_frontend.sh
+```
+
+也可以覆盖静态服务的监听地址/端口：
+
+```bash
+HOST=0.0.0.0 PORT=5173 ./scripts/start_frontend.sh
+```
    
